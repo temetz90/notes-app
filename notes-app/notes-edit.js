@@ -21,7 +21,7 @@ bodyElement.value = note.body
 //edit title of note
 titleElement.addEventListener('input', function (e) {
     note.updatedAt = moment().valueOf()
-    editElement.textContent = `Last edited ${moment(note.updatedAt).fromNow()}`
+    editElement.textContent = generateLastEdited(note.updatedAt);
     note.title = e.target.value
     saveNotes(notes)
 })
@@ -29,7 +29,7 @@ titleElement.addEventListener('input', function (e) {
 //Edit body of note
 bodyElement.addEventListener('input', function (e) {
     note.updatedAt = moment().valueOf()
-    editElement.textContent = `Last edited ${moment(note.updatedAt).fromNow()}`
+    editElement.textContent = generateLastEdited(note.updatedAt);
     note.body = e.target.value
     saveNotes(notes)
 })
@@ -52,7 +52,7 @@ window.addEventListener('storage', function (e) {
             location.assign('/index.html')
         }
 
-        editElement.textContent = `Last edited ${moment(note.updatedAt).fromNow()}`
+        editElement.textContent = generateLastEdited(note.updatedAt);
         
         titleElement.value = note.title
         bodyElement.value = note.body

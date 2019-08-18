@@ -57,8 +57,47 @@ const generateNoteDom = function (note) {
     return noteEl
 }
 
+// sort your notes by the drop down menu
+const sortNotes = function (notes, sortBy) {
+    if (sortBy === 'byEdited') {
+        return notes.sort(function (a,b) {
+            if (a.updatedAt > b.updatedAt) {
+                return -1
+            } else if (a.updatedAt < b.updatedAt) {
+                return 1
+            } else {
+                return 0
+            }
+
+        })
+    } else if (sortBy === 'byCreated') {
+        return notes.sort(function (a,b) {
+            if (a.createdAt > b.createdAt) {
+                return -1
+            } else if (a.createdAt < b.createdAt) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+    } else if (sortBy === 'alphabetical') {
+        return notes.sort(function (a,b) {
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                return 1
+            } else if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return -1
+            } else {
+                return 0
+            }
+        })
+    } else {
+        return notes
+    }
+}
+
 // Render Application Notes
 const renderNotes = function (notes, filters) {
+    notes = sortNotes(notes, filters.sortBy)
     const filteredNotes = notes.filter(function (note) {
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
     })
@@ -72,4 +111,7 @@ const renderNotes = function (notes, filters) {
 }
 
 
-// add a timestamp to each new note made
+// generate last edited
+const generateLastEdited = function (timestamp) {
+    return `Last edited ${moment(timestamp).fromNow()}`
+}
