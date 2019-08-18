@@ -36,6 +36,8 @@ removeElement.addEventListener('click', function (e) {
     location.assign('/index.html')
 })
 
+
+//recognize changes to local storage and update in real time
 window.addEventListener('storage', function (e) {
     if (e.key === 'notes') {
         notes = JSON.parse(e.newValue)
