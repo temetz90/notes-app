@@ -1,7 +1,7 @@
 const titleElement = document.querySelector('#note-title')
 const bodyElement = document.querySelector('#note-body')
 const removeElement = document.querySelector('#remove-note')
-
+const editElement = document.querySelector('#editEl')
 
 const noteID = location.hash.substring(1)
 let notes = getSavedNotes();
@@ -13,18 +13,23 @@ if (note === undefined) {
     location.assign('/index.html')
 }
 
+editElement.textContent = `Last edited ${moment(note.updatedAt).fromNow()}`
+
 titleElement.value = note.title
 bodyElement.value = note.body
 
-
 //edit title of note
 titleElement.addEventListener('input', function (e) {
+    note.updatedAt = moment().valueOf()
+    editElement.textContent = `Last edited ${moment(note.updatedAt).fromNow()}`
     note.title = e.target.value
     saveNotes(notes)
 })
 
 //Edit body of note
 bodyElement.addEventListener('input', function (e) {
+    note.updatedAt = moment().valueOf()
+    editElement.textContent = `Last edited ${moment(note.updatedAt).fromNow()}`
     note.body = e.target.value
     saveNotes(notes)
 })
@@ -36,8 +41,6 @@ removeElement.addEventListener('click', function (e) {
     location.assign('/index.html')
 })
 
-
-//recognize changes to local storage and update in real time
 window.addEventListener('storage', function (e) {
     if (e.key === 'notes') {
         notes = JSON.parse(e.newValue)
@@ -48,6 +51,8 @@ window.addEventListener('storage', function (e) {
         if (note === undefined) {
             location.assign('/index.html')
         }
+
+        editElement.textContent = `Last edited ${moment(note.updatedAt).fromNow()}`
         
         titleElement.value = note.title
         bodyElement.value = note.body

@@ -13,10 +13,14 @@ document.querySelector('#search-text').addEventListener('input', function (f) {
 
 document.querySelector('#create-note').addEventListener('click', function (e) {
     const id = uuidv4();
+    const timestamp = moment().valueOf()
+
     notes.push({
         id: id,
         title: '',
-        body: ''
+        body: '',
+        createdAt: timestamp,
+        updatedAt: timestamp
     })
     localStorage.setItem('notes', JSON.stringify(notes))
     renderNotes(notes, filters)
@@ -31,20 +35,8 @@ window.addEventListener('storage', function (e) {
     if (e.key === 'notes') {
         notes = JSON.parse(e.newValue)
         renderNotes(notes, filters)
+        this.console.log(e)
     }
+
 })
 
-// const now = moment();
-
-// now.subtract(1, 'week');
-// console.log(now.fromNow())
-
-// const nowTimeStamp = now.valueOf()
-
-// console.log(moment(nowTimeStamp).toString());
-
-
-const birthday = moment().month('August').date(7).year(1990)
-// birthday.month('August').date(7).year(1990)
-
-console.log(birthday.format('MMM D, YYYY'));
