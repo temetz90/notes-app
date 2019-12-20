@@ -2,6 +2,8 @@
 
 <html>
     <head>
+            <title>Notes Edit</title>
+            <link href="/images/icon_image.png" rel='icon'>
         <link href="/styles/styles.css" rel="stylesheet">
     </head>
     <body>
@@ -17,10 +19,12 @@
                 <span id="editEl"></span>
             </div>
         </div>
-
-        <input id="note-title" placeholder="Note Title">
-        <textarea id="note-body" placeholder="Enter Note Text"></textarea>
-        <button id="remove-note">Remove Note</button>
+    <div class="container">
+        <input id="note-title" placeholder="Note Title" class='title-input'>
+        <textarea id="note-body" placeholder="Enter Note Text" class='body-input'></textarea>
+        <button id="remove-note" class='button button--secondary'>Remove Note</button>
+    </div>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>
     <script src="scripts\notes-functions.js"></script>
     <script src="scripts\notes-edit.js"></script>

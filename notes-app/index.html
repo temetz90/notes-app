@@ -2,6 +2,8 @@
 
 <html>
     <head>
+        <title>Notes App</title>
+        <link href="/images/icon_image.png" rel='icon'>
         <link href="/styles/styles.css" rel="stylesheet">
     </head>
 
@@ -12,7 +14,6 @@
         <h2 class="header__subtitle">Subtitle</h2>
             </div>
         </div>
-
         <div class="actions">
             <div class="actions__container">
                 <input id='search-text' placeholder='Search Notes' class="input">
@@ -23,11 +24,11 @@
                 </select>
             </div>
         </div>
+        <div class="container">
+            <div id='notes'></div>
 
-        <div id='notes'></div>
-
-        <button id='create-note' class="button">Create Note</button>
-
+            <button id='create-note' class="button">Create Note</button>
+        </div>
         <script src='scripts\uuidv4.js'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>
         <script src="scripts\notes-functions.js"></script>
