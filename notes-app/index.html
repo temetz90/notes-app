@@ -2,20 +2,36 @@
 
 <html>
     <head>
+        <link href="/styles/styles.css" rel="stylesheet">
     </head>
+
     <body>
-        <h1>Notes App</h1>
-            <input id='search-text' placeholder='Search Notes'>
-            <select id="filter-by">
-                <option value="byEdited">Sort by Last Edited</option>
-                <option value="byCreated">Sort by Recently Created</option>
-                <option value="alphabetical">Sort Alphabetically</option>
-            </select>
+        <div class="header">
+            <div class="container">
+        <h1 class="header__title">Notes App</h1>
+        <h2 class="header__subtitle">Subtitle</h2>
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="actions__container">
+                <input id='search-text' placeholder='Search Notes' class="input">
+                <select id="filter-by" class="dropdown">
+                    <option value="byEdited">Sort by Last Edited</option>
+                    <option value="byCreated">Sort by Recently Created</option>
+                    <option value="alphabetical">Sort Alphabetically</option>
+                </select>
+            </div>
+        </div>
+
         <div id='notes'></div>
-        <button id='create-note'>Create Note</button>
-        <script src="http://wzrd.in/standalone/uuid%2Fv4@latest"></script>
+
+        <button id='create-note' class="button">Create Note</button>
+
+        <script src='scripts\uuidv4.js'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>
-        <script src="notes-functions.js"></script>
-        <script src="notes-app.js"></script>
+        <script src="scripts\notes-functions.js"></script>
+        <script src="scripts\notes-app.js"></script>
+
     </body>
 </html>
